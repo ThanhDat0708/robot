@@ -5,10 +5,6 @@ import math
 app = Flask(__name__)
 
 
-# ==========================================
-# TÍNH KHOẢNG CÁCH
-# ==========================================
-
 def tinh_khoang_cach(p1, p2):
 
     lat1, lon1 = p1
@@ -44,9 +40,6 @@ def tao_ma_tran(points):
     return matrix
 
 
-# ==========================================
-# FITNESS
-# ==========================================
 
 def fitness(route, matrix):
 
@@ -70,10 +63,6 @@ def fitness(route, matrix):
 
     return tong
 
-
-# ==========================================
-# CROSSOVER
-# ==========================================
 
 def crossover(
     parent1,
@@ -112,10 +101,6 @@ def crossover(
     return child
 
 
-# ==========================================
-# MUTATE
-# ==========================================
-
 def mutate(route):
 
     if random.random() < 0.2:
@@ -130,10 +115,6 @@ def mutate(route):
             route[i]
         )
 
-
-# ==========================================
-# SELECTION
-# ==========================================
 
 def select(
     population,
@@ -164,10 +145,6 @@ def select(
     return selected[0][0]
 
 
-# ==========================================
-# HOME
-# ==========================================
-
 @app.route("/")
 def home():
 
@@ -175,10 +152,6 @@ def home():
         "index.html"
     )
 
-
-# ==========================================
-# OPTIMIZE
-# ==========================================
 
 @app.route(
     "/optimize",
@@ -231,10 +204,6 @@ def optimize():
         best_distance = float(
             "inf"
         )
-
-        # ======================
-        # GA LOOP
-        # ======================
 
         for _ in range(
             GENERATIONS
@@ -340,10 +309,6 @@ def optimize():
             str(e)
         })
 
-
-# ==========================================
-# MAIN
-# ==========================================
 
 if __name__ == "__main__":
 

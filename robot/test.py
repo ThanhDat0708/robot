@@ -5,9 +5,6 @@ import requests as req
 
 app = Flask(__name__)
 
-# ==================================
-# DISTANCE
-# ==================================
 
 def euclidean_distance(p1, p2):
 
@@ -113,9 +110,6 @@ def build_distance_matrix(points):
     return matrix
 
 
-# ==================================
-# GA
-# ==================================
 
 def calculate_fitness(
     route,
@@ -200,10 +194,6 @@ def mutate(route):
         )
 
 
-# ==================================
-# ROUTES
-# ==================================
-
 @app.route("/")
 def index():
 
@@ -246,19 +236,13 @@ def optimize():
             f"{n} points"
         )
 
-        # ==================
-        # DISTANCE MATRIX
-        # ==================
+    
 
         dist_matrix = (
             build_distance_matrix(
                 points
             )
         )
-
-        # ==================
-        # GA PARAM
-        # ==================
 
         pop_size = 120
         generations = 150
@@ -280,9 +264,6 @@ def optimize():
             float("inf")
         )
 
-        # ==================
-        # GA LOOP
-        # ==================
 
         for gen in range(
             generations
@@ -392,9 +373,6 @@ def optimize():
         }), 500
 
 
-# ==================================
-# MAIN
-# ==================================
 
 if __name__ == "__main__":
 
